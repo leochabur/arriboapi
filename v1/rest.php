@@ -177,7 +177,7 @@ $app->post('/predictivo/calcular/:orden', function ($orden) use ($app) {
             {
                 //el servicio aun no ha iniciado, solo deberia devolver la parada mas cercana al usuario
 
-                $gpx = simplexml_load_file($_SERVER['DOCUMENT_ROOT']."/gpx/files/$row[gpx_file]");
+                $gpx = simplexml_load_file("../$row[gpx_file]");
 
                 $paradas = procesarParadas($gpx, ['x' => $input['posicionPasajero']['latitud'], 'y' => $input['posicionPasajero']['longitud']]); 
 
@@ -201,7 +201,6 @@ $app->post('/predictivo/calcular/:orden', function ($orden) use ($app) {
                             "informacionUsuario" => [
                                                       "latitud" => $input['posicionPasajero']['latitud'],
                                                       "longitud" => $input['posicionPasajero']['longitud'],
-                                                      "parada" => $paradas[0]
                                                     ],
                             "gpx" => $base64
                         ];
