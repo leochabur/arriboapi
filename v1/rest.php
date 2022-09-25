@@ -183,7 +183,7 @@ $app->post('/predictivo/calcular/:orden', function ($orden) use ($app) {
 
                 $parada = $paradas[1]; 
 
-                $image = file_get_contents($_SERVER['DOCUMENT_ROOT']."/gpx/files/$row[gpx_file]");
+                $image = file_get_contents("../$row[gpx_file]");
 
                 $base64 = base64_encode($image); 
 
