@@ -170,7 +170,7 @@ $app->post('/predictivo/calcular/:orden', function ($orden) use ($app) {
             
             if ($now > $llegada)
             {
-                echoResponse(200, ['status' => 301, 'message' => 'El servicio ya ha finalizado']);
+                echoResponse(200, ['status' => 301, 'message' => 'El servicio ya ha finalizado', 'hora' => $now]);
             }
             elseif ($salida > $now)
             {
