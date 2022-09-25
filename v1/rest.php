@@ -188,14 +188,14 @@ $app->post('/predictivo/calcular/:orden', function ($orden) use ($app) {
                             "mensaje" => "El servicio aun no ha iniciado",
                             "paradaRecomendada" => [
                                                       "nombre" => $parada['name'],
-                                                      "latitud": $parada['point']['x'],
-                                                      "longitud": $parada['point']['y'],
-                                                      "tiempoEstimadoArribo": "0",
-                                                      "distanciaEstimadaArribo": $parada['dist']
+                                                      "latitud" => $parada['point']['x'],
+                                                      "longitud" => $parada['point']['y'],
+                                                      "tiempoEstimadoArribo" => "0",
+                                                      "distanciaEstimadaArribo" => $parada['dist']
                                                     ],
                             "informacionUsuario" => [
-                                                      "latitud": $input['posicionPasajero']['latitud'],
-                                                      "longitud": $input['posicionPasajero']['longitud']
+                                                      "latitud" => $input['posicionPasajero']['latitud'],
+                                                      "longitud" => $input['posicionPasajero']['longitud']
                                                     ],
                             "gpx" => $base64
                         ];
