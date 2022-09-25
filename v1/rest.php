@@ -303,6 +303,8 @@ $app->get('/gpx/:cron', function ($cron) use ($app) {
 $app->get('/servicios/proximos', function () use ($app) {
     try
     {
+        $conn = mysqli_connect('mariadb-masterbus-trafico.planisys.net', 'c0mbexpuser', 'Mb2013Exp', 'c0mbexport');
+
         $sql = "SELECT concat(ord.nombre, ' - ', time_format(hsalidaplantareal, '%H:%i'))  as servicio,
                        ord.id as iOrdenTrabajo,
                        hcitacionreal as hcitacion,
@@ -329,7 +331,7 @@ $app->get('/servicios/proximos', function () use ($app) {
                       ord.id_estructura = 1
                 ORDER BY ord.nombre";
 
-        $result = ejecutarSQLPDO($sql);
+        $result = mysqli_query($conn, $sql);
         $ordenes = [];
 
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
