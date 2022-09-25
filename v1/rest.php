@@ -1,4 +1,6 @@
 <?php
+
+error_reporting(0);
 /**
  *
  * @About:      API Interface
@@ -54,7 +56,7 @@ $app = new \Slim\Slim();
 
  function distancia($x1, $y1, $x2, $y2)
  {
-      return distanceGPS($x1, $y1, $x2, $y2, 'K');
+     // return distanceGPS($x1, $y1, $x2, $y2, 'K');
 
       $moduloRaiz = pow(($x2 - $x1), 2) + pow(($y2 - $y1), 2);
       return sqrt($moduloRaiz);
@@ -129,7 +131,9 @@ $app->post('/predictivo/calcular/:orden', function ($orden) use ($app) {
             return $data;
         }
 
-        $result = ejecutarSQLPDO("SELECT hsalidaplantareal as horaSalida,
+        $conn = mysqli_connect('mariadb-masterbus-trafico.planisys.net', 'c0mbexpuser', 'Mb2013Exp', 'c0mbexport');
+
+        $result = mysqli_query($conn, "SELECT hsalidaplantareal as horaSalida,
                                            fservicio as fechaServicio,
                                            ord.id as iOrdenTrabajo,
                                            interno,
