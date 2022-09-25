@@ -200,7 +200,8 @@ $app->post('/predictivo/calcular/:orden', function ($orden) use ($app) {
                                                     ],
                             "informacionUsuario" => [
                                                       "latitud" => $input['posicionPasajero']['latitud'],
-                                                      "longitud" => $input['posicionPasajero']['longitud']
+                                                      "longitud" => $input['posicionPasajero']['longitud'],
+                                                      "parada" => $parada
                                                     ],
                             "gpx" => $base64
                         ];
