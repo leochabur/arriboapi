@@ -54,6 +54,8 @@ $app = new \Slim\Slim();
 
  function distancia($x1, $y1, $x2, $y2)
  {
+      return distanceGPS($x1, $y1, $x2, $y2, 'K');
+
       $moduloRaiz = pow(($x2 - $x1), 2) + pow(($y2 - $y1), 2);
       return sqrt($moduloRaiz);
  }
@@ -169,16 +171,37 @@ $app->post('/predictivo/calcular/:orden', function ($orden) use ($app) {
             elseif ($salida > $now)
             {
                 //el servicio aun no ha iniciado, solo deberia devolver la parada mas cercana al usuario
-               // echoResponse(200, ['status' => 301, 'message' => 'Todavia no salio']);
-
-                //$posUnidad = getPosInterno($row['interno']);
 
                 $gpx = simplexml_load_file($_SERVER['DOCUMENT_ROOT']."/gpx/files/$row[gpx_file]");
 
-                $paradas = procesarParadas($gpx, ['x' => $input['posicionPasajero']['latitud'], 'y' => $input['posicionPasajero']['longitud']]);  
-                return echoResponse(200, $paradas[1]);
+                $paradas = procesarParadas($gpx, ['x' => $input['posicionPasajero']['latitud'], 'y' => $input['posicionPasajero']['longitud']]); 
 
-                
+                $parada = $paradas[1]; 
+
+                $image = file_get_contents($_SERVER['DOCUMENT_ROOT']."/gpx/files/$row[gpx_file]");
+
+                $base64 = base64_encode($image); 
+
+                $result = [
+                  
+                            "status" => 200,
+                            "mensaje" => "El servicio aun no ha iniciado",
+                            "paradaRecomendada" => [
+                                                      "nombre" => $parada['name'],
+                                                      "latitud": $parada['point']['x'],
+                                                      "longitud": $parada['point']['y'],
+                                                      "tiempoEstimadoArribo": "0",
+                                                      "distanciaEstimadaArribo": $parada['dist']
+                                                    ],
+                            "informacionUsuario" => [
+                                                      "latitud": $input['posicionPasajero']['latitud'],
+                                                      "longitud": $input['posicionPasajero']['longitud']
+                                                    ],
+                            "gpx" => $base64
+                        ];
+
+
+                return echoResponse(200, $result);                
             }
             else
             {
