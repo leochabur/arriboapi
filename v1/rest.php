@@ -1,12 +1,6 @@
 <?php
 
-header('Access-Control-Allow-Origin: *');
 
-header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
-
-header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With');
-
-header('Access-Control-Max-Age: 86400');
 
 require_once ('../lib/nusoap.php');
 
@@ -15,6 +9,13 @@ require '../libs/Slim/Slim.php';
 $app = new \Slim\Slim();
 
 if($app->request->isOptions()) {
+header('Access-Control-Allow-Origin: *');
+
+header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+
+header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With');
+
+header('Access-Control-Max-Age: 86400');
    return true;
    break;
 }
