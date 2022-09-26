@@ -15,7 +15,6 @@ error_reporting(0);
  * Nótese los métodos permitidos en Access-Control-Allow-Methods. Esto nos permite limitar los métodos de consulta a nuestro RESTfull API
  * Mas información: https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
  **/
-header("Access-Control-Allow-Origin: *");
 header('Access-Control-Allow-Credentials: true');
 header('Access-Control-Allow-Methods: PUT, GET, POST, DELETE, OPTIONS');
 header("Access-Control-Allow-Headers: X-Requested-With");
