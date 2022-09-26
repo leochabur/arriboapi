@@ -9,21 +9,26 @@ require '../libs/Slim/Slim.php';
 $app = new \Slim\Slim();
 
 
-$app->options('/(:name+)', function() use($app) {                  
+/*$app->options('/(:name+)', function() use($app) {                  
     $response = $app->response();
     $app->response()->status(200);
     $response->header('Access-Control-Allow-Origin', '*'); 
     $response->header('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With, X-authentication, X-client');
     $response->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
- });
+ });*/
 
-/*
+
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Methods: HEAD, GET, POST, PUT, PATCH, DELETE, OPTIONS");
+header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method,Access-Control-Request-Headers, Authorization");
+header('Content-Type: application/json');
+
 if($app->request->isOptions()) {
 
    return true;
    break;
 }
-*/
+
  function distanceGPS($lat1, $lon1, $lat2, $lon2, $unit) {
   
    $theta = $lon1 - $lon2;
