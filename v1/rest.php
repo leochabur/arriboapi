@@ -15,11 +15,11 @@ error_reporting(0);
  * Nótese los métodos permitidos en Access-Control-Allow-Methods. Esto nos permite limitar los métodos de consulta a nuestro RESTfull API
  * Mas información: https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
  **/
-header('Access-Control-Allow-Credentials: true');
+/*header('Access-Control-Allow-Credentials: true');
 header('Access-Control-Allow-Methods: PUT, GET, POST, DELETE, OPTIONS');
 header("Access-Control-Allow-Headers: X-Requested-With");
 header('Content-Type: text/html; charset=utf-8');
-header('P3P: CP="IDC DSP COR CURa ADMa OUR IND PHY ONL COM STA"'); 
+header('P3P: CP="IDC DSP COR CURa ADMa OUR IND PHY ONL COM STA"'); */
 
 
 
