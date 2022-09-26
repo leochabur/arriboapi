@@ -20,12 +20,12 @@ $app = new \Slim\Slim();
 
 
 
-/*if($app->request->isOptions()) {
+if($app->request->isOptions()) {
 
    return true;
    break;
 }
-*/
+
  function distanceGPS($lat1, $lon1, $lat2, $lon2, $unit) {
   
    $theta = $lon1 - $lon2;
