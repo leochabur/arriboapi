@@ -1,6 +1,6 @@
 <?php
 
-error_reporting(0);
+//error_reporting(E_ALL);
 /**
  *
  * @About:      API Interface
@@ -21,9 +21,9 @@ header("Access-Control-Allow-Headers: X-Requested-With");
 header('Content-Type: text/html; charset=utf-8');
 header('P3P: CP="IDC DSP COR CURa ADMa OUR IND PHY ONL COM STA"'); */
 
-//header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
-header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
+header('Access-Control-Allow-Origin: *');
+//header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
+//header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 
 
 
@@ -209,7 +209,7 @@ $app->post('/predictivo/calcular/:orden', function ($orden) use ($app) {
                         ];
 
 
-                return echoResponse(200, $result);                
+                echoResponse(200, $result);                
             }
             else
             {
